@@ -42,6 +42,7 @@ function CountryDetail() {
       name: country.name,
       capital: country.capital,
       region: country.region,
+      subregion: country.subregion,
       population: country.population,
       flags: country.flags,
     }
