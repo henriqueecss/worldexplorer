@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { getAllCountries } from '../services/countriesService'
 import CountryCard from '../components/CountryCard'
+import Header from '../components/Header'
+import styles from './Home.module.css'
 
 function Home() {
   const [countries, setCountries] = useState([])
@@ -18,11 +20,14 @@ function Home() {
   if (error) return <p>Erro: {error}</p>
 
   return (
-     <div>
-    {countries.map(country => (
-      <CountryCard key={country.cca3} country={country} />
-    ))}
-  </div>
+    <div>
+      <Header />
+      <div className={styles.grid}>
+        {countries.map(country => (
+          <CountryCard key={country.cca3} country={country} />
+        ))}
+      </div>
+    </div>
   )
 }
 
