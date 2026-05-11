@@ -1,7 +1,8 @@
 import { Navigate } from 'react-router-dom'
+import { getCurrentUser } from '../services/authService'
 
 function PrivateRoute({ children }) {
-  const user = localStorage.getItem('user')
+  const user = getCurrentUser()
   return user ? children : <Navigate to="/login" />
 }
 
