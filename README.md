@@ -58,7 +58,7 @@ src/
 
 ## Como instalar e executar
 
-**Pré-requisitos:** Node.js 18+
+**Pré-requisitos:** Node.js 20+
 
 ```bash
 # Clone o repositório
