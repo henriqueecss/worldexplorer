@@ -6,7 +6,7 @@
   border: 1px solid var(--border);
   background-color: var(--bg-card);
   color: var(--text-primary);
-  font-family: var(--font-sans);
+  font-family: 'Inter', system-ui, sans-serif;
   font-size: 0.8rem;
   letter-spacing: 0.02em;
   z-index: 1000;
