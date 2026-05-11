@@ -2,6 +2,8 @@
 
 Aplicação web para explorar informações sobre países do mundo todo, desenvolvida como desafio trainee de Frontend da CompJr.
 
+**Demo:** [worldexplorer-puce.vercel.app](https://worldexplorer-puce.vercel.app)
+
 ## Funcionalidades
 
 **Autenticação**
@@ -60,7 +62,7 @@ src/
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/worldexplorer.git
+git clone https://github.com/henriqueecss/worldexplorer.git
 cd worldexplorer
 
 # Instale as dependências
@@ -74,7 +76,7 @@ Acesse `http://localhost:5173` no navegador.
 
 ## Como usar
 
-1. Crie uma conta em **Criar conta** ou acesse com qualquer e-mail válido e senha (mínimo 8 caracteres, uma maiúscula e um número)
+1. Crie uma conta em **Criar conta** (e-mail válido, mínimo 8 caracteres, uma maiúscula e um número) e faça login
 2. Alterne entre dark e light mode pelo botão no canto superior direito do header
 3. Navegue pelos países — busque por nome, filtre por região ou ordene por nome/população
 4. Clique em qualquer card para ver os detalhes completos do país
