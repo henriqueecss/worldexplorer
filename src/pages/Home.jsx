@@ -12,7 +12,7 @@ const SORT_OPTIONS = [
 ]
 
 function Home() {
-  const { countries, filtered, loading, error, search, setSearch, region, setRegion, sort, setSort } = useCountries()
+  const { countries, filtered, loading, error, search, setSearch, region, setRegion, sort, setSort, regions } = useCountries()
 
   if (loading) return (
     <>
@@ -38,7 +38,7 @@ function Home() {
     <div>
       <Header />
       <div className={styles.hero}>
-        <span className={styles.heroEyebrow}>{countries.length} países · 8 regiões</span>
+        <span className={styles.heroEyebrow}>{countries.length} países · {regions.length} regiões</span>
         <h1 className={styles.heroTitle}>WorldExplorer</h1>
         <p className={styles.heroSubtitle}>
           Uma coleção curada de países ao redor do mundo, explorando sua cultura, geografia e características únicas.
@@ -46,6 +46,7 @@ function Home() {
       </div>
       <div className={styles.filters}>
         <input
+          aria-label="Buscar país"
           className={styles.input}
           type="text"
           placeholder="Buscar país..."
@@ -54,11 +55,9 @@ function Home() {
         />
         <select className={styles.select} value={region} onChange={e => setRegion(e.target.value)}>
           <option value="">Todas as regiões</option>
-          <option value="Africa">África</option>
-          <option value="Americas">Américas</option>
-          <option value="Asia">Ásia</option>
-          <option value="Europe">Europa</option>
-          <option value="Oceania">Oceania</option>
+          {regions.map(r => (
+            <option key={r} value={r}>{r}</option>
+          ))}
         </select>
         <select className={styles.select} value={sort} onChange={e => setSort(e.target.value)}>
           {SORT_OPTIONS.map(o => (
@@ -68,9 +67,12 @@ function Home() {
         <span className={styles.count}>{filtered.length} resultado{filtered.length !== 1 ? 's' : ''}</span>
       </div>
       <div className={styles.grid}>
-        {filtered.map(country => (
-          <CountryCard key={country.cca3} country={country} />
-        ))}
+        {filtered.length === 0
+          ? <p className={styles.empty}>Nenhum país encontrado para os filtros aplicados.</p>
+          : filtered.map(country => (
+            <CountryCard key={country.cca3} country={country} />
+          ))
+        }
       </div>
     </div>
   )

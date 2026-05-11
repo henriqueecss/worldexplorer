@@ -98,6 +98,16 @@
   border-bottom: 1px solid var(--border);
 }
 
+.empty {
+  grid-column: 1 / -1;
+  padding: 4rem 2rem;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
 .errorState {
   display: flex;
   flex-direction: column;

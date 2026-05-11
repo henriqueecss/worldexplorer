@@ -32,5 +32,7 @@ export function useCountries() {
       })
   }, [countries, search, region, sort])
 
-  return { countries, filtered, loading, error, search, setSearch, region, setRegion, sort, setSort }
+  const regions = [...new Set(countries.map(c => c.region).filter(Boolean))].sort()
+
+  return { countries, filtered, loading, error, search, setSearch, region, setRegion, sort, setSort, regions }
 }
