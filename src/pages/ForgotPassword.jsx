@@ -28,7 +28,7 @@ function ForgotPassword() {
   function handleReset(e) {
     e.preventDefault()
     setError(null)
-    if (password.length < 6) { setError('A senha deve ter no mínimo 6 caracteres.'); return }
+    if (password.length < 8) { setError('A senha deve ter no mínimo 8 caracteres.'); return }
     if (password !== confirm) { setError('As senhas não coincidem.'); return }
     try {
       resetPassword(email, password)

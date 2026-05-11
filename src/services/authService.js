@@ -16,10 +16,6 @@ export function registerUser(email, password) {
 
 export function loginUser(email, password) {
   const users = getUsers()
-  if (users.length === 0) {
-    localStorage.setItem(SESSION_KEY, JSON.stringify({ email }))
-    return
-  }
   const user = users.find(
     u => u.email === email.toLowerCase() && u.password === password
   )
