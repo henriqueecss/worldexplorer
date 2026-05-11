@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
+import { logout } from '../services/authService'
 import styles from './Header.module.css'
 
 function Header() {
@@ -7,16 +8,16 @@ function Header() {
   const { theme, toggleTheme } = useTheme()
 
   function handleLogout() {
-    localStorage.removeItem('user')
+    logout()
     navigate('/login')
   }
 
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-        <span className={styles.logo} onClick={() => navigate('/')}>
+        <button className={styles.logo} onClick={() => navigate('/')}>
           WorldExplorer
-        </span>
+        </button>
       </div>
       <nav className={styles.nav}>
         <button className={styles.navBtn} onClick={() => navigate('/')}>Início</button>
