@@ -1,6 +1,12 @@
 import styles from './CountryCard.module.css'
+import { addFavorite } from '../services/favoritesService'
 
 function CountryCard({ country }) {
+  function handleFavorite() {
+    addFavorite(country)
+    alert(`${country.name.common} adicionado aos favoritos!`)
+  }
+
   return (
     <div className={styles.card}>
       <img
@@ -13,6 +19,9 @@ function CountryCard({ country }) {
         <p>Capital: {country.capital?.[0] ?? 'N/A'}</p>
         <p>Região: {country.region}</p>
         <p>População: {country.population.toLocaleString()}</p>
+        <button className={styles.favoriteBtn} onClick={handleFavorite}>
+          ⭐ Favoritar
+        </button>
       </div>
     </div>
   )

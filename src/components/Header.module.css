@@ -25,3 +25,21 @@
 .button:hover {
   background-color: #c0392b;
 }
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navBtn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.navBtn:hover {
+  text-decoration: underline;
+}

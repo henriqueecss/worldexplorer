@@ -11,8 +11,14 @@ function Header() {
 
   return (
     <header className={styles.header}>
-      <h1>🌍 WorldExplorer</h1>
-      <button className={styles.button} onClick={handleLogout}>Sair</button>
+      <h1 onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+        🌍 WorldExplorer
+      </h1>
+      <nav className={styles.nav}>
+        <button className={styles.navBtn} onClick={() => navigate('/')}>Início</button>
+        <button className={styles.navBtn} onClick={() => navigate('/favorites')}>⭐ Minha Lista</button>
+        <button className={styles.button} onClick={handleLogout}>Sair</button>
+      </nav>
     </header>
   )
 }

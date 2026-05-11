@@ -31,3 +31,18 @@
   font-size: 0.9rem;
   color: #555;
 }
+
+.favoriteBtn {
+  margin-top: 0.8rem;
+  padding: 0.4rem 0.8rem;
+  background-color: #f39c12;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.favoriteBtn:hover {
+  background-color: #d68910;
+}
