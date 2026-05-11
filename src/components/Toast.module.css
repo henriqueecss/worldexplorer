@@ -1,0 +1,34 @@
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid var(--border);
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  z-index: 1000;
+  animation: fadeInOut 2.5s ease forwards;
+}
+
+.success {
+  border-color: var(--accent);
+}
+
+.info {
+  border-color: var(--border);
+}
+
+.error {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@keyframes fadeInOut {
+  0%   { opacity: 0; transform: translateY(8px); }
+  15%  { opacity: 1; transform: translateY(0); }
+  75%  { opacity: 1; }
+  100% { opacity: 0; }
+}
