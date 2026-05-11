@@ -33,6 +33,7 @@ function CountryCard({ country }) {
         className={`${styles.starBtn} ${favorited ? styles.starActive : ''}`}
         onClick={handleFavorite}
         title={favorited ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
+        aria-label={favorited ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
       >
         {favorited ? '★' : '☆'}
       </button>
