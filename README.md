@@ -89,3 +89,23 @@ Acesse `http://localhost:5173` no navegador.
 npm run build
 npm run preview
 ```
+
+## Executar com Docker
+
+**Pré-requisitos:** Docker Desktop instalado e em execução.
+
+```bash
+docker compose up --build
+```
+
+Acesse `http://localhost:8080` no navegador. A imagem usa Node.js 22 para o build e Nginx Alpine para servir os arquivos estáticos.
+
+## Diferenciais implementados
+
+- **Commits descritivos** — histórico com conventional commits (`feat:`, `fix:`, `docs:`, `chore:`), uma alteração lógica por commit
+- **Validações de formulário** — e-mail, senha mínima de 8 caracteres, letra maiúscula, número e confirmação de senha
+- **Feedback visual** — toasts animados, spinner de carregamento e estado de erro com botão de retry
+- **Tratamento de erros da API** — falhas de conexão exibem mensagem amigável com opção de tentar novamente
+- **Deploy** — aplicação disponível em [worldexplorer-puce.vercel.app](https://worldexplorer-puce.vercel.app)
+- **Kanban** — projeto organizado com GitHub Projects (A Fazer / Em Andamento / Concluído)
+- **Docker** — containerização com multi-stage build (Node 22 + Nginx Alpine)
