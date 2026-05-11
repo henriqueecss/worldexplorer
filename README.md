@@ -1,25 +1,40 @@
-# 🌍 WorldExplorer
+# WorldExplorer
 
 Aplicação web para explorar informações sobre países do mundo todo, desenvolvida como desafio trainee de Frontend da CompJr.
 
 ## Funcionalidades
 
-- **Login** com validação de formulário (e-mail, senha mínima de 6 caracteres) e autenticação simulada via `localStorage`
-- **Listagem de países** consumida da [RestCountries API](https://restcountries.com), com busca por nome e filtro por região
-- **Página de detalhe** de cada país, exibindo nome oficial, nome nativo, capital, região, sub-região, população, área, moedas, idiomas, domínio e países vizinhos clicáveis
-- **Lista de favoritos** com suporte a anotações por país (Create, Update, Delete via `localStorage`)
-- **Feedback visual** com toast de notificação ao favoritar/desfavoritar países
+**Autenticação**
+- Cadastro com validação de e-mail, senha mínima de 8 caracteres, exigência de letra maiúscula e número, e indicador visual de força da senha
+- Login com verificação contra usuários cadastrados e feedback por toast
+- Redefinição de senha em duas etapas: verificação do e-mail e definição da nova senha
 - Rotas protegidas — apenas usuários autenticados acessam a aplicação
+
+**Exploração de países**
+- Listagem de ~250 países consumida da [RestCountries API](https://restcountries.com)
+- Busca por nome, filtro por região e ordenação por nome (A→Z, Z→A) ou população
+- Página de detalhe com nome oficial, nome nativo, capital, sub-região, população, área, moedas, idiomas, domínio e países vizinhos clicáveis
+
+**Favoritos — CRUD completo via `localStorage`**
+- **Create** — adicionar país aos favoritos pelo card ou pela página de detalhe
+- **Read** — listagem dos países salvos em "Minha Lista"
+- **Update** — editar anotação individual por país com fluxo explícito de editar/salvar/cancelar
+- **Delete** — remover país da lista com toast de confirmação
+
+**Experiência**
+- Tema dark/light com preferência persistida no `localStorage` (dark por padrão)
+- Toasts de feedback em todas as ações relevantes (login, cadastro, favoritar, salvar nota)
+- Spinner animado e estado de erro estilizado com botão de retry
 - Layout responsivo para mobile, tablet e desktop
 
 ## Tecnologias utilizadas
 
 | Tecnologia | Versão | Justificativa |
 |---|---|---|
-| React | 19 | Biblioteca recomendada pelo desafio, componentização eficiente e ecossistema maduro |
-| Vite | 8 | Ferramenta de build moderna com HMR instantâneo, superior ao CRA em performance de desenvolvimento |
+| React | 19 | Biblioteca recomendada pelo desafio; componentização, Context API e hooks customizados tornam a arquitetura escalável |
+| Vite | 8 | Build tool moderna com HMR instantâneo, substitui CRA com ganho real de performance no desenvolvimento |
 | React Router DOM | 7 | Solução padrão de roteamento para React, com suporte a rotas protegidas e navegação declarativa |
-| CSS Modules | — | Escopo de estilos por componente sem dependência extra, evita conflitos de classe e mantém o CSS próximo de quem o usa |
+| CSS Modules | — | Escopo de estilos por componente sem dependência extra; evita conflito de classes e mantém o CSS colocado com quem o usa |
 
 A autenticação e o CRUD de favoritos foram implementados via `localStorage`, conforme orientação do desafio para candidatos da trilha front-end.
 
@@ -27,14 +42,17 @@ A autenticação e o CRUD de favoritos foram implementados via `localStorage`, c
 
 ```
 src/
-├── assets/          # Imagens e recursos estáticos
-├── components/      # Componentes reutilizáveis (Header, CountryCard, Toast)
-├── context/         # Contextos React para estado global (favoritos e toasts)
-├── pages/           # Páginas da aplicação (Login, Home, Favorites, CountryDetail)
-└── services/        # Funções de acesso a dados (API e localStorage)
+├── assets/       # Imagens e recursos estáticos
+├── components/   # Componentes reutilizáveis (Header, CountryCard, Toast, Spinner)
+├── context/      # Contextos React para estado global (temas, favoritos, toasts)
+├── hooks/        # Custom hooks (useCountries)
+├── pages/        # Páginas da aplicação (Login, Register, ForgotPassword, Home, Favorites, CountryDetail)
+└── services/     # Funções de acesso a dados (API RestCountries, authService, favoritesService)
 ```
 
-A pasta `context/` foi adicionada ao modelo base pois o React possui uma camada de estado global distinta de serviços e componentes. Misturá-la em `services/` seria semanticamente incorreto, já que serviços lidam com persistência e a API externa, enquanto contextos gerenciam estado em memória compartilhado entre componentes.
+**Sobre a pasta `styles/`:** o desafio sugere essa pasta como exemplo de estrutura. Optamos por CSS Modules, que colocam cada arquivo `.module.css` ao lado do componente que o usa. Essa abordagem elimina a necessidade de uma pasta `styles/` global, evita conflitos de classe e é amplamente adotada em projetos React modernos. A escolha está justificada na tabela de tecnologias acima.
+
+**Sobre `context/` e `hooks/`:** foram adicionados ao modelo base porque o React possui camadas de estado global e lógica reutilizável que não se encaixam semanticamente em `components/` nem em `services/`. Contextos gerenciam estado em memória compartilhado entre componentes; hooks encapsulam lógica com estado sem renderizar interface. Misturá-los com serviços (que lidam com persistência e APIs externas) comprometeria a clareza da arquitetura.
 
 ## Como instalar e executar
 
@@ -56,11 +74,12 @@ Acesse `http://localhost:5173` no navegador.
 
 ## Como usar
 
-1. Na tela de login, informe qualquer e-mail válido e uma senha com no mínimo 6 caracteres
-2. Navegue pela listagem de países — use a busca ou o filtro por região
-3. Clique em um card para ver os detalhes completos do país
-4. Use o botão **☆ Favoritar** para adicionar à sua lista pessoal
-5. Acesse **⭐ Minha Lista** no header para gerenciar seus favoritos e adicionar anotações
+1. Crie uma conta em **Criar conta** ou acesse com qualquer e-mail válido e senha (mínimo 8 caracteres, uma maiúscula e um número)
+2. Alterne entre dark e light mode pelo botão no canto superior direito do header
+3. Navegue pelos países — busque por nome, filtre por região ou ordene por nome/população
+4. Clique em qualquer card para ver os detalhes completos do país
+5. Use o **☆** no card ou na página de detalhe para adicionar à sua lista
+6. Acesse **Minha Lista** no header para gerenciar favoritos, editar anotações e remover países
 
 ## Build para produção
 
